@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 
 rem Author: Johnny Nunez (johnnynunez)
 rem %1: Python version
-choco install git 
+choco install git -y
 for /f "tokens=2 delims=@" %%a in ("%str%") do (
     set PYVERSION=%%a
 )
@@ -16,7 +16,8 @@ rem Declare the array for the Python version
 set PYTHON_VERSION=(%1)
 
 rem Install necessary packages
-choco install wget cmake %PYTHON_VERSION%
+choco install python --version=%PYTHON_VERSION% -y
+choco install wget cmake -y
 vckpg install --triplet x64-windows boost-filesystem boost-graph boost-program-options boost-regex boost-system boost-test ceres[lapack,suitesparse] cgal eigen3 flann freeimage metis gflags glew glog qt5-base sqlite3
 rem Upgrade GCC if necessary
 choco upgrade gcc
