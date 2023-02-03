@@ -24,7 +24,7 @@ jobs:
           submodules: recursive
       - name: Build the Windows wheels
         run: |
-          bash package/build-wheels-windows.sh ${{ matrix.pyversion }}
+          bash package/build-wheels-windows.cmd ${{ matrix.pyversion }}
         continue-on-error: true
 
       - name: Archive wheels
