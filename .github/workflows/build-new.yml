@@ -33,6 +33,9 @@ jobs:
           # This one is not needed, as it is the default value anyway.
           # vcpkgDirectory: '${{ github.workspace }}/vcpkg'
           vcpkgJsonGlob: '**/cmakepresets/vcpkg.json'
+        inputs:
+          vcpkgArguments: './build-windows-vcpkg.txt'
+
 
       - name: List $RUNNER_WORKSPACE before build
         run: find $RUNNER_WORKSPACE
