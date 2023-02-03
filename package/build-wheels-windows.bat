@@ -4,6 +4,7 @@ setlocal enabledelayedexpansion
 
 rem Author: Johnny Nunez (johnnynunez)
 rem %1: Python version
+choco uninstall python
 set PYTHON=%1
 for /f "tokens=2 delims=@" %%a in ("%PYTHON%") do set PYTHON_VERSION=%%a
 echo Python version is %PYTHON_VERSION%
@@ -14,7 +15,7 @@ rem Set the location of the Python interpreter
 set PYTHON=python.exe
 
 rem Install necessary packages
-choco install python --version=%PYTHON_VERSION% -y
+choco install python --version=%PYTHON_VERSION% -y --force
 choco install wget cmake -y
 vckpg install --triplet x64-windows boost-filesystem boost-graph boost-program-options boost-regex boost-system boost-test ceres[lapack,suitesparse] cgal eigen3 flann freeimage metis gflags glew glog qt5-base sqlite3
 rem Upgrade GCC if necessary
