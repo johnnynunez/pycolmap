@@ -25,12 +25,12 @@ jobs:
       - name: Build the Windows wheels
         shell: cmd
         run: |
-          package/build-wheels-windows.bat ${{ matrix.pyversion }}
+          .\package.\build-wheels-windows.bat ${{ matrix.pyversion }}
       - name: Archive wheels
         uses: actions/upload-artifact@v3
         with:
           name: pycolmap-${{ matrix.pyversion }}-windows
-          path: ./wheelhouse/pycolmap-*.whl
+          path: .\wheelhouse\pycolmap-*.whl
 
   pypi-publish:
     name: Publish wheels to PyPI
