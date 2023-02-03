@@ -23,7 +23,7 @@ jobs:
         with:
           submodules: recursive
       - name: Build the Windows wheels
-        shell: bash
+        shell: cmd
         run: |
           package/build-wheels-windows.cmd ${{ matrix.pyversion }}
       - name: Archive wheels
