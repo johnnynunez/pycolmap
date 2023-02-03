@@ -5,7 +5,11 @@ setlocal enabledelayedexpansion
 rem Author: Johnny Nunez (johnnynunez)
 rem %1: Python version
 choco install git 
-cho install python --version=%1
+for /f "tokens=2 delims=@" %%a in ("%str%") do (
+    set PYVERSION=%%a
+)
+
+choco install python --version=PYVERSION
 rem Install vckpg
 git clone https://github.com/microsoft/vcpkg
 cd vcpkg
