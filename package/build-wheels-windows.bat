@@ -9,12 +9,6 @@ for /f "tokens=2 delims=@" %%a in ("%str%") do (
     set PYVERSION=%%a
 )
 
-choco install python --version=PYVERSION
-rem Install vckpg
-git clone https://github.com/microsoft/vcpkg
-cd vcpkg
-.\bootstrap-vcpkg.bat
-
 rem Set the location of the Python interpreter
 set PYTHON=python.exe
 
