@@ -31,6 +31,7 @@ jobs:
         id: runvcpkg
         with:
           vcpkgGitCommitId: '91dd61bd441a68b4017b61011d0350b2e6aeeccf'
+          runVcpkgInstall: true
       - name: List $RUNNER_WORKSPACE before build
         run: find $RUNNER_WORKSPACE
         shell: bash
@@ -40,7 +41,7 @@ jobs:
         uses: lukka/run-cmake@v10
         id: runcmake
         with:
-          cmakeListsTxtPath: '${{ github.workspace }}/cmakepresets/CMakeLists.txt'
+          cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
           configurePreset: 'ninja-multi-vcpkg'
           buildPreset: 'ninja-multi-vcpkg'
       - name: List $RUNNER_WORKSPACE after build
