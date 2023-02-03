@@ -4,7 +4,8 @@ setlocal enabledelayedexpansion
 
 rem Author: Johnny Nunez (johnnynunez)
 rem %1: Python version
-for /f "tokens=2 delims=@" %%a in %1 do (
+set PYTHON=%1
+for /f "tokens=2 delims=@" %%a in (%1) do (
     set PYVERSION=%%a
 )
 rem PYVERSION
