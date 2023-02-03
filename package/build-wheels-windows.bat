@@ -4,6 +4,12 @@ setlocal enabledelayedexpansion
 
 rem Author: Johnny Nunez (johnnynunez)
 
+choco install git
+rem Install vckpg
+git clone https://github.com/microsoft/vcpkg
+cd vcpkg
+.\bootstrap-vcpkg.bat
+
 rem Set the location of the Python interpreter
 set PYTHON=python.exe
 
@@ -12,8 +18,7 @@ set PYTHON_VERSION=(%1)
 
 rem Install necessary packages
 choco install wget cmake %PYTHON_VERSION%
-choco install git cmake boost eigen freeimage flann glog gflags metis suite-sparse ceres-solver qt5 glew cgal sqlite3 libomp llvm lz4
-
+vckpg install --triplet x64-windows boost-filesystem boost-graph boost-program-options boost-regex boost-system boost-test ceres[lapack,suitesparse] cgal eigen3 flann freeimage metis gflags glew glog qt5-base sqlite3
 rem Upgrade GCC if necessary
 choco upgrade gcc
 
@@ -26,15 +31,6 @@ set PATH=%PYBIN%;%PATH%
 
 rem Save the current working directory
 set CURRDIR=%CD%
-
-rem Build Boost statically
-mkdir boost_build
-cd boost_build
-wget boost_1_81_0-msvc-14.3-64.exe
-tar xzf boost_1_81_0.tar.gz
-cd boost_1_81_0
-bootstrap.bat --prefix=%CURRDIR%\boost_install --with-libraries=serialization,filesystem,thread,system,atomic,date_time,timer,chrono,program_options,regex
-b2 -j%NUMBER_OF_PROCESSORS% cxxflags="-fPIC" runtime-link=static variant=release link=static install
 
 cd %CURRDIR%
 mkdir wheelhouse_unrepaired
