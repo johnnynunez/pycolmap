@@ -4,10 +4,11 @@ setlocal enabledelayedexpansion
 
 rem Author: Johnny Nunez (johnnynunez)
 rem %1: Python version
-choco install git -y
 for /f "tokens=2 delims=@" %%a in %1 do (
     set PYVERSION=%%a
 )
+rem PYVERSION
+rem %%a
 
 rem Set the location of the Python interpreter
 set PYTHON=python.exe
