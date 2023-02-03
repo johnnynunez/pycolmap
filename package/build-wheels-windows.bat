@@ -5,17 +5,13 @@ setlocal enabledelayedexpansion
 rem Author: Johnny Nunez (johnnynunez)
 rem %1: Python version
 set PYTHON=%1
-for /f "tokens=2 delims=@" %%a in ("%1") do (
-    set PYVERSION=%%a
-)
+for /f "tokens=2 delims=@" %%a in ("%PYTHON%") do set PYTHON_VERSION=%%a
+echo Python version is %PYTHON_VERSION%
 rem PYVERSION
 rem %%a
 
 rem Set the location of the Python interpreter
 set PYTHON=python.exe
-
-rem Declare the array for the Python version
-set PYTHON_VERSION=(%1)
 
 rem Install necessary packages
 choco install python --version=%PYTHON_VERSION% -y
@@ -27,6 +23,7 @@ choco upgrade gcc
 rem Get the Python version numbers only by splitting the string
 set PYBIN="%ProgramFiles%\Python\%PYTHON_VERSION%\Scripts"
 set INTERPRETER="%ProgramFiles%\Python\%PYTHON_VERSION%\python.exe"
+
 
 rem Add the Python bin path to the PATH environment variable
 set PATH=%PYBIN%;%PATH%
