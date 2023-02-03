@@ -23,11 +23,9 @@ jobs:
         with:
           submodules: recursive
       - name: Build the Windows wheels
-        shell: shell
+        shell: bash
         run: |
-          bash package/build-wheels-windows.cmd ${{ matrix.pyversion }}
-        continue-on-error: true
-
+          package/build-wheels-windows.cmd ${{ matrix.pyversion }}
       - name: Archive wheels
         uses: actions/upload-artifact@v3
         with:
