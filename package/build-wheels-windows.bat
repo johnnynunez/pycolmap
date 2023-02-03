@@ -30,7 +30,7 @@ set CURRDIR=%CD%
 rem Build Boost statically
 mkdir boost_build
 cd boost_build
-wget https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.gz
+wget boost_1_81_0-msvc-14.3-64.exe
 tar xzf boost_1_81_0.tar.gz
 cd boost_1_81_0
 bootstrap.bat --prefix=%CURRDIR%\boost_install --with-libraries=serialization,filesystem,thread,system,atomic,date_time,timer,chrono,program_options,regex
