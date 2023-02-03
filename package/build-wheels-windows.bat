@@ -3,8 +3,9 @@
 setlocal enabledelayedexpansion
 
 rem Author: Johnny Nunez (johnnynunez)
-
-choco install git
+rem %1: Python version
+choco install git 
+cho install python --version=%1
 rem Install vckpg
 git clone https://github.com/microsoft/vcpkg
 cd vcpkg
