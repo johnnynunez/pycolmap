@@ -3,7 +3,7 @@ name: PyCOLMAP build and publish
 on:
   push:
     branches:
-      - master
+      - windows-CI
   pull_request:
     types: [ assigned, opened, synchronize, reopened ]
   release:
